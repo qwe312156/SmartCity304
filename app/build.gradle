@@ -30,6 +30,13 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation files('libs\\annotation-4.7.0.jar')
+    implementation files('libs\\compiler-4.7.0.jar')
+    implementation files('libs\\glide-full-4.7.0.jar')
+    implementation files('libs\\gson-2.8.0.jar')
+    implementation files('libs\\okhttp-3.2.0.jar')
+    implementation files('libs\\okio-1.12.0.jar')
+    implementation files('libs\\simpleUMLCE_8205.jar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
