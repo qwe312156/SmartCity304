@@ -4,11 +4,21 @@ import android.app.Application;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 public class MyApplication extends Application {
 
     static private Context context;
     static private String Token;
     static private String MyUrl;
+    static private Gson gson;
+    public static Gson getGson(){
+        return gson;
+    }
+
+    public static Context getContext() {
+        return context;
+    }
 
     public static String getToken() {
         return Token;
@@ -29,6 +39,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         context = this;
+        gson = new Gson();
         super.onCreate();
     }
 
