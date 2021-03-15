@@ -127,9 +127,9 @@ public class Luncher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(TextUtils.isEmpty(ipdress.getText())){
-                MyApplication.showToast(Luncher.this,"IP设置不能为空");
+                MyApplication.showToast("IP设置不能为空");
                 }else if(TextUtils.isEmpty(portress.getText())) {
-                    MyApplication.showToast(Luncher.this,"端口不能为空");
+                    MyApplication.showToast("端口不能为空");
                 }else {
 
                 }
