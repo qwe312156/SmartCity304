@@ -44,7 +44,7 @@
         android:inputType="text"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -53,11 +53,11 @@
         android:layout_height="40dp"
         android:ems="10"
         android:hint="端口"
-        android:inputType="text"
+        android:inputType="number"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ipdress"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <Button

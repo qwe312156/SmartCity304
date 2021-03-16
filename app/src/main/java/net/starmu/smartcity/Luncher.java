@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import net.starmu.smartcity.utils.HttpCallBack;
+import net.starmu.smartcity.utils.HttpUtils;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Luncher extends AppCompatActivity {
     private ViewPager luncherViewpager;
@@ -45,6 +51,8 @@ public class Luncher extends AppCompatActivity {
     private EditText ipdress;
     private EditText portress;
     private Button button;
+    private Map<String, Object> testaccount;
+    private View inflate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +93,7 @@ public class Luncher extends AppCompatActivity {
     }
 
     private void initview() {
+        testaccount = new HashMap<>();
         adapter=new ViewAdapter();
         imgs=new ArrayList<>();
         imgs.add(R.drawable.lancher1);
@@ -116,10 +125,10 @@ public class Luncher extends AppCompatActivity {
                 //写dialog
 //                editor.putString("isfirst","false").commit();
                 dialog=new Dialog(Luncher.this);
-                dialog.setContentView(R.layout.item_luncher);
+                dialog.setContentView(inflate);//这里要写inflate，不能直接写R.layout
+                dialog.setCancelable(false);
+                dialog.show();
 
-                startActivity(new Intent(Luncher.this,MainActivity.class));
-                Luncher.this.finish();
             }
         });
 
@@ -127,18 +136,46 @@ public class Luncher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(TextUtils.isEmpty(ipdress.getText())){
-                MyApplication.showToast("IP设置不能为空");
+                    MyApplication.showToast("IP设置不能为空");
                 }else if(TextUtils.isEmpty(portress.getText())) {
                     MyApplication.showToast("端口不能为空");
                 }else {
+                    testaccount.put("username","cghk004");
+                    testaccount.put("password","123456");
+                    HttpUtils.doPost(testaccount, "http://"+ipdress.getText()+":"+portress.getText()+"/login", new HttpCallBack() {
+                        @Override
+                        public void onSuccess(String json) {
+                            Log.i("1", "onSuccess: ");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i("1", "run: ");
+                                    MyApplication.showToast("登录成功");
+                                    startActivity(new Intent(Luncher.this,MainActivity.class));
+                                    Luncher.this.finish();
+                                }
+                            });
+                        }
 
+                        @Override
+                        public void onError(final String error) {
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i("1", "run: "+error);
+                                    MyApplication.showToast("登录失败，请检查端口设置");
+                                }
+                            });
+                        }
+                    });
                 }
             }
         });
     }
 
     private void bindview() {
-        View inflate=LayoutInflater.from(this).inflate(R.layout.item_luncher,null,false);
+        inflate = LayoutInflater.from(this).inflate(R.layout.item_luncher,null,false);
 
         textView = inflate.findViewById(R.id.textView);
         textView2 = inflate.findViewById(R.id.textView2);
