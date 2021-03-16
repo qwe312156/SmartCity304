@@ -17,4 +17,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected abstract int getLayout();
+
+    public void initToolbar(String title,boolean flag){
+        if (getContext() instanceof BaseActivity){
+            ((BaseActivity) getContext()).initToolbar(title,flag);
+        }
+    }
+    public void hideToolbar(){
+        if (getContext() instanceof BaseActivity){
+            ((BaseActivity) getContext()).hideToolbar();
+        }
+    }
 }
