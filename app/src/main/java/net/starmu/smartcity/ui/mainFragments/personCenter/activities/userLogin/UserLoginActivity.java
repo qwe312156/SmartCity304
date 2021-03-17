@@ -35,6 +35,7 @@ public class UserLoginActivity extends BaseActivity {
 
     private void initEvent() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Map<String,Object> date = new HashMap<>();
