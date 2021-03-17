@@ -58,7 +58,7 @@ public class Luncher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luncher);
-//        isfistlogin();//用作第一次判定
+        isfistlogin();//用作第一次判定
         bindview();
         initview();
         group();
@@ -123,7 +123,7 @@ public class Luncher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //写dialog
-//                editor.putString("isfirst","false").commit();
+                editor.putString("isfirst","false").commit();
                 dialog=new Dialog(Luncher.this);
                 dialog.setContentView(inflate);//这里要写inflate，不能直接写R.layout
                 dialog.setCancelable(false);
@@ -151,10 +151,12 @@ public class Luncher extends AppCompatActivity {
                                 public void run() {
                                     Log.i("1", "run: ");
                                     MyApplication.showToast("登录成功");
+                                    MyApplication.setMyUrl("http://"+ipdress.getText().toString().trim()+":"+portress.getText().toString().trim());
                                     startActivity(new Intent(Luncher.this,MainActivity.class));
                                     Luncher.this.finish();
                                 }
                             });
+
                         }
 
                         @Override
@@ -169,6 +171,8 @@ public class Luncher extends AppCompatActivity {
                             });
                         }
                     });
+
+
                 }
             }
         });

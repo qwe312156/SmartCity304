@@ -5,6 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-<include layout="@layout/toolbar"></include>
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"></include>
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"></com.youth.banner.Banner>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recservice"
+        android:layout_width="409dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
 </androidx.constraintlayout.widget.ConstraintLayout>
