@@ -2,6 +2,7 @@ package net.starmu.smartcity;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -12,6 +13,9 @@ public class MyApplication extends Application {
     static private String Token="";
     static private String MyUrl="";
     static private Gson gson;
+    static private SharedPreferences sharedPreferences;
+    static private SharedPreferences.Editor editor;
+
     public static Gson getGson(){
         return gson;
     }
@@ -29,17 +33,23 @@ public class MyApplication extends Application {
     }
 
     public static String getMyUrl() {
-        return MyUrl;
+
+        return sharedPreferences.getString("MyUrl","");
+
     }
 
     public static void setMyUrl(String myUrl) {
         MyUrl = myUrl;
+        editor.putString("MyUrl",myUrl).commit();
     }
+
 
     @Override
     public void onCreate() {
         context = this;
         gson = new Gson();
+        sharedPreferences=context.getSharedPreferences("MyUrl",MODE_PRIVATE);
+        editor=sharedPreferences.edit();
         super.onCreate();
     }
 
