@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import net.starmu.smartcity.bean.UserInfoBean;
+
 public class MyApplication extends Application {
 
     static private Context context;
@@ -15,6 +17,15 @@ public class MyApplication extends Application {
     static private Gson gson;
     static private SharedPreferences sharedPreferences;
     static private SharedPreferences.Editor editor;
+    static private UserInfoBean userInfo;
+
+    public static UserInfoBean getUserInfo() {
+        return userInfo;
+    }
+
+    public static void setUserInfo(UserInfoBean userInfo) {
+        MyApplication.userInfo = userInfo;
+    }
 
     public static Gson getGson(){
         return gson;

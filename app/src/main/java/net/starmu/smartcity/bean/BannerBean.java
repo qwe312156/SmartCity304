@@ -1,4 +1,4 @@
-package net.starmu.smartcity.ui.home;
+package net.starmu.smartcity.bean;
 
 import java.util.List;
 

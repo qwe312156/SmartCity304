@@ -1,30 +1,25 @@
-package net.starmu.smartcity.ui.home;
+package net.starmu.smartcity.ui.mainFragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.youth.banner.Banner;
-import com.youth.banner.adapter.BannerAdapter;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;
 import com.youth.banner.indicator.CircleIndicator;
 
 import net.starmu.smartcity.MyApplication;
 import net.starmu.smartcity.R;
+import net.starmu.smartcity.bean.BannerBean;
 import net.starmu.smartcity.utils.HttpCallBack;
 import net.starmu.smartcity.utils.HttpUtils;
 
@@ -53,7 +48,7 @@ public class HomeFragment extends Fragment {
         HttpUtils.doGet("/userinfo/rotation/list?type=45", new HttpCallBack() {
             @Override
             public void onSuccess(String json) {
-                for (int i = 0; i <MyApplication.getGson().fromJson(json,BannerBean.class).getTotal() ; i++) {
+                for (int i = 0; i <MyApplication.getGson().fromJson(json, BannerBean.class).getTotal() ; i++) {
                    imgs.add(MyApplication.getGson().fromJson(json,BannerBean.class).getRows().get(i).getImgUrl());
                 }
 

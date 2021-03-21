@@ -1,15 +1,21 @@
 package net.starmu.smartcity.ui.mainFragments.personCenter.activities.userLogin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import net.starmu.smartcity.MyApplication;
 import net.starmu.smartcity.R;
 import net.starmu.smartcity.base.BaseActivity;
+import net.starmu.smartcity.bean.UserInfoBean;
 import net.starmu.smartcity.utils.HttpCallBack;
 import net.starmu.smartcity.utils.HttpUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,18 +44,32 @@ public class UserLoginActivity extends BaseActivity {
 
             @Override
             public void onClick(View v) {
-                Map<String,Object> date = new HashMap<>();
-                date.put("username",edtUsername.getText().toString().trim());
-                date.put("password",edtPassword.getText().toString().trim());
+                Map<String, Object> date = new HashMap<>();
+                date.put("username", edtUsername.getText().toString().trim());
+                date.put("password", edtPassword.getText().toString().trim());
                 HttpUtils.doPost(date, "/login", new HttpCallBack() {
                     @Override
                     public void onSuccess(String json) {
-                        MyApplication.showToast("登录成功！");
+                        try {
+                            JSONObject jsonObject = new JSONObject(json);
+                            MyApplication.setToken(jsonObject.getString("token"));
+                        } catch (JSONException e) {
+                            runOnUiThread(() -> MyApplication.showToast("保存Token失败"));
+                        }
+                        runOnUiThread(new Runnable() {
+                                          @Override
+                                          public void run() {
+                                              setResult(0);
+                                              finish();
+                                          }
+                                      }
+
+                        );
                     }
 
                     @Override
                     public void onError(String error) {
-
+                        runOnUiThread(() -> MyApplication.showToast(error));
                     }
                 });
             }
