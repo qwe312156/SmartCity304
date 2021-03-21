@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="?attr/actionBarSize"
+    tools:context=".ui.mainFragments.personCenter.PersonCenterFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="15dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="50dp">
+
+        <ImageView
+            android:id="@+id/person_image_userIco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#808080" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="点击头像登录" />
+
+    <Button
+        android:id="@+id/btn_userInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:text="个人信息"/>
+
+    <Button
+        android:id="@+id/btn_orderList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:text="订单列表"/>
+
+    <Button
+        android:id="@+id/btn_changePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:text="修改密码"/>
+
+    <Button
+        android:id="@+id/btn_opinion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="18sp"
+        android:text="意见反馈"/>
+</LinearLayout>

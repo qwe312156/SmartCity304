@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="net.starmu.smartcity.ui.home.HomeFragment"
+        android:name="net.starmu.smartcity.ui.mainFragments.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="net.starmu.smartcity.ui.notifications.NotificationsFragment"
+        android:id="@+id/person_center"
+        android:name="net.starmu.smartcity.ui.mainFragments.personCenter.PersonCenterFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_person_center" />
 </navigation>

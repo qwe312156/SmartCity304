@@ -7,8 +7,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
+=======
+import net.starmu.smartcity.bean.UserInfoBean;
+>>>>>>> 136e4a9d6b40e38fa80146d8fabafa83b10b0383
 
 public class MyApplication extends Application {
 
@@ -18,6 +22,7 @@ public class MyApplication extends Application {
     static private Gson gson;
     static private SharedPreferences sharedPreferences;
     static private SharedPreferences.Editor editor;
+<<<<<<< HEAD
     static HashMap<String,Object> Clickmap;
     public static HashMap<String, Object> getClickmap() {
         return Clickmap;
@@ -33,6 +38,17 @@ public class MyApplication extends Application {
 
     }
 
+=======
+    static private UserInfoBean userInfo;
+
+    public static UserInfoBean getUserInfo() {
+        return userInfo;
+    }
+
+    public static void setUserInfo(UserInfoBean userInfo) {
+        MyApplication.userInfo = userInfo;
+    }
+>>>>>>> 136e4a9d6b40e38fa80146d8fabafa83b10b0383
 
     public static Gson getGson(){
         return gson;

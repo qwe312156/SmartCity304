@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="net.starmu.smartcity">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".ui.home.Activity.SmartBusActivity.SmartBus"></activity>
+=======
+        <activity android:name=".ui.mainFragments.personCenter.activities.userInfo.UserInfoActivity"></activity>
+        <activity android:name=".ui.mainFragments.personCenter.activities.userLogin.UserLoginActivity" />
+>>>>>>> 136e4a9d6b40e38fa80146d8fabafa83b10b0383
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Luncher"
