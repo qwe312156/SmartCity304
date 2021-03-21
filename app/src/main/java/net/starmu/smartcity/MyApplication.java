@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MyApplication extends Application {
 
     static private Context context;
@@ -15,6 +18,21 @@ public class MyApplication extends Application {
     static private Gson gson;
     static private SharedPreferences sharedPreferences;
     static private SharedPreferences.Editor editor;
+    static HashMap<String,Object> Clickmap;
+    public static HashMap<String, Object> getClickmap() {
+        return Clickmap;
+    }
+
+    public static void setClickmap(HashMap<String, Object> clickmap) {
+        Clickmap = clickmap;
+      for(String key:clickmap.keySet()){
+          //这里面的话，key就是String的Key，Value就是clickmap.get(key);
+         Clickmap.put(key,clickmap.get(key));
+
+      }
+
+    }
+
 
     public static Gson getGson(){
         return gson;
